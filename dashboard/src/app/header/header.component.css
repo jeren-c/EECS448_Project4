@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+    padding:0px;
+    overflow: hidden;
+    border-style: none;
+    border-width: 25px;
+    border-color: black;
+    text-align: center;
+    background-color: grey;
+    margin: 0px;
+}
+    
+li {
+    color: black;
+    float: left;
+    margin: 5px;
+}
+
+li a {
+    color:white;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color:rgba(9, 25, 97, 0.151);
+    opacity: 0.8;
+}
