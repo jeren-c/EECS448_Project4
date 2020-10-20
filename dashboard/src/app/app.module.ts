@@ -7,6 +7,8 @@ import { BudgetComponent } from './budget/budget.component';
 import { GroceryComponent } from './grocery/grocery.component';
 import { WeightComponent } from './weight/weight.component';
 import { HeaderComponent } from './header/header.component';
+import { GroceryListComponent } from './grocery-list/grocery-list.component';
+import { GroceryItemComponent } from './grocery-item/grocery-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HeaderComponent } from './header/header.component';
     BudgetComponent,
     GroceryComponent,
     WeightComponent,
-    HeaderComponent
+    HeaderComponent,
+    GroceryListComponent,
+    GroceryItemComponent
   ],
   imports: [
     BrowserModule,
