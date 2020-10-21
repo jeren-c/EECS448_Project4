@@ -1,1 +1,39 @@
-<p>weight works!</p>
+<h2>Weight Tracker</h2>
+
+<div class="List">
+    <ul>
+        <li>iniWeight: <input type="text" id="iniWeight" [(ngModel)]="iniWeight" /></li>
+
+        <li>goalWeight: <input type="text" id="goalWeight" [(ngModel)]="goalWeight" /></li>
+
+        <li>changedWeight: <input type="text" id="changedWeight" [(ngModel)]="changedWeight" /></li>
+
+        <li>
+            commit: <textarea name="commit" id="commit" cols="30" rows="10" [(ngModel)]="commit"></textarea>
+        </li>
+    </ul>
+
+    <button (click) = "doSubmit()">Submit</button>
+    <!--
+    <div *ngIf="changedWeight <= goalWeight">
+        <h3> Congrats! you have reached the goal!</h3>
+    </div>
+    <div *ngIf="highDiffer > 0">
+        <h3>you fat {{highDiffer}} pounds, {{remaining}} pounds still need to lose!</h3>
+    </div>
+    <div *ngIf="lowDiffer > 0">
+        <h3>you fat {{highDiffer}} pounds, {{remaining}} pounds still need to lose!</h3>
+    </div>-->
+
+
+
+    <pre>
+
+        {{iniWeight | json}}
+        {{goalWeight | json}}
+        {{changedWeight | json}}
+        {{differ | json}}
+        {{commit | json}}
+    </pre>
+
+</div>
