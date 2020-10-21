@@ -2,15 +2,9 @@
 
 <div class="List">
     <ul>
-        <li>iniWeight: <input type="text" id="iniWeight" [(ngModel)]="iniWeight" /></li>
-
-        <li>goalWeight: <input type="text" id="goalWeight" [(ngModel)]="goalWeight" /></li>
-
-        <li>changedWeight: <input type="text" id="changedWeight" [(ngModel)]="changedWeight" /></li>
-
-        <li>
-            commit: <textarea name="commit" id="commit" cols="30" rows="10" [(ngModel)]="commit"></textarea>
-        </li>
+        <p>Initial Weight <input type="number" (keyup)="updateIni($event)" id= "intWeight" size="3"/>lb</p>
+        <p>Goal Weight <input type="number" (keyup)= "updateG($event)" id= "goalWeight" size="3"/>lb</p>
+        <p>Current Weight <input type="number" (keyup)="updateC($event)" id= "weightIn" size="3"/>lb</p>
     </ul>
 
     <button (click) = "doSubmit()">Submit</button>
@@ -33,7 +27,7 @@
         {{goalWeight | json}}
         {{changedWeight | json}}
         {{differ | json}}
-        {{commit | json}}
+        
     </pre>
-
+    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/considering-losing-weight-1602099244.png?crop=0.5023255813953489xw:1xh;center,top&resize=640:*" alt="weight" width= "200" height="250">
 </div>
