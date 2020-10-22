@@ -5,12 +5,12 @@
         <div class="col">
             <div class="amount">
                 <div class= "row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="initial">
                             <label>Current bank amount</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="initial">
                             <input type="number" (keyup)="updateAmount($event)" id='aInput'>
                             &nbsp;
@@ -23,6 +23,7 @@
         <div class="col"></div>
     </div>
     <div *ngIf="ivalid">
+        <hr>
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col">
