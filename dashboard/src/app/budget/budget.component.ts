@@ -9,6 +9,8 @@ import { ExpenseService, Expenses } from '../expense.service';
 })
 export class BudgetComponent implements OnInit {
 
+  // Variable Declarations //
+
   incomeData: any;
   expenseData: any;
   result: Expenses[] = [];
@@ -34,12 +36,27 @@ export class BudgetComponent implements OnInit {
   margin: number;
 
 
+  /**
+   * Constructor when the component is intialized. It calls for the creation of a form group.
+   * @pre None
+   * @post None
+   * @param fb name for the form
+   * @throws None
+   * @returns None
+   */
   constructor(fb: FormBuilder) {
     this.categoryForm = fb.group({
       category: new FormControl('', [Validators.required])
     })
     }
 
+  /**
+   * Function that activates when component is intialized. In this application it initializes all variables to default values.
+   * @pre None
+   * @post None
+   * @throws None
+   * @returns None
+   */  
   ngOnInit(): void {
     this.amount = 0;
     this.income = 0;
@@ -57,12 +74,39 @@ export class BudgetComponent implements OnInit {
   }
 
   // Income //
+
+  /**
+   * Used to update the bank account amount
+   * @pre New amount for the bank account
+   * @post Bank amount has been updated
+   * @param event variable that is the user inputted value
+   * @throws None
+   * @returns None
+   */
   updateAmount(event: any){
     this.amount = event.target.value;
   }
+
+  /**
+   * Used to update the amount for an income
+   * @pre New income amount needs to be added
+   * @post Takes in that new income
+   * @param event variable that is the user inputted value
+   * @throws None
+   * @returns None 
+   */
   addIncome(event: any){
     this.itemp = event.target.value;
   }
+
+  /**
+   * Used to update the overall data for the user's income and calls a function to refresh the pie chart
+   * @pre Need to update total income
+   * @post Total income is now updated
+   * @param val the amount of the new income
+   * @throws None
+   * @returns None 
+   */
   updateIncome(val:number){
     this.itemp = 0;
     this.income = +this.income + +val;
@@ -75,9 +119,27 @@ export class BudgetComponent implements OnInit {
   }
 
   // Category //
+
+  /**
+   * Used to add a category of expense
+   * @pre Need to add a new category of expense
+   * @post Takes in that new category
+   * @param event variable that is the user inputted string
+   * @throws None
+   * @returns None 
+   */
   addCategory(event: any){
     this.ctemp = event.target.value;
   }
+
+  /**
+   * Used to update the list of categories in alphabetical order
+   * @pre Need to update the list of categories
+   * @post Now list of categories is updated
+   * @param str the new category that is need to update the category list
+   * @throws None
+   * @returns None
+   */
   updateCategoryList(str: String){
     this.ctemplist = [];
     for(let item of this.categoryList)
@@ -103,9 +165,26 @@ export class BudgetComponent implements OnInit {
   }
 
   // Expense //
+
+  /**
+   * Used to add an expense
+   * @pre Need to add in an expense
+   * @post Takes in that new expense
+   * @param event variable that is user inputted value
+   * @throws None
+   * @returns None
+   */
   addExpense(event:any){
     this.expense = event.target.value;
   }
+
+  /**
+   * Used to update the total expenses, calls a function to refresh the pie chart, and updates if a saving goal has been met
+   * @pre Need to update the total expenditures
+   * @post Now total expenditures has been updated
+   * @throws None
+   * @returns None
+   */
   updateExpense(){
     if(this.categoryForm.valid && this.categoryForm.value.category !== 'Select one...'){
       let i = 0;
@@ -149,6 +228,15 @@ export class BudgetComponent implements OnInit {
       alert('Invalid action!\nYou need to choose a category.');
     }
   }
+
+  /**
+   * Used to calculate the total expense
+   * @pre There is not an accurate summation of the expenses
+   * @post An accurate of expenses
+   * @param arr array of expense values
+   * @throws None
+   * @returns None
+   */
   totalExpense(arr: any){
     this.totalexp = 0;
     for(let item of arr){
@@ -159,14 +247,39 @@ export class BudgetComponent implements OnInit {
   }
 
   // Savings //
+
+  /**
+   * Used to calculate the percentage of the savings
+   * @pre There is a saving percent that user wants to add
+   * @post Takes in that saving value and converts it into a percent/decimal value
+   * @param event variable that is the user inputted value
+   * @throws None
+   * @returns None
+   */
   addSavings(event:any){
     this.percent = (event.target.value/100);
   }
+
+  /**
+   * Used to update the savings amount the user wants to achieve and calculates if they have done that
+   * @pre User want to save certain amount of money
+   * @post Keeps track if the user has met the savings goal
+   * @throws None
+   * @returns None
+   */
   updateSavings(){
     this.save = +this.income * +this.percent;
     console.log(this.save);
     this.checkSavings();
   }
+
+  /**
+   * Used to check if savings goal has been met
+   * @pre There is saving goal and the user needs to know if it has been met
+   * @post The amount of the money the user has saved is calculated and updates a variable that will show the user how much they have saved
+   * @throws None
+   * @returns None
+   */
   checkSavings(){
     if(this.save > 0){
       if( this.income > 0 && this.totalexp === 0){
@@ -203,6 +316,14 @@ export class BudgetComponent implements OnInit {
   }
 
   // Chart Data //
+
+  /**
+   * Updates the income pie chart
+   * @pre Need to update the pie chart
+   * @post Pie chart has been updated
+   * @throws None
+   * @returns None
+   */
   updateIncomeData(){
     this.ivalid = true;
     if(this.income > 0 && this.amount > 0){
@@ -220,6 +341,14 @@ export class BudgetComponent implements OnInit {
     console.log("income chart data");
     console.log(this.incomeData);
   }
+
+  /**
+   * Updates the expense pie chart
+   * @pre Need to update the pie chart
+   * @post Pie chart has been updated
+   * @throws None
+   * @returns None
+   */
   updateExpenseData(){
     this.evalid = true;
     this.expenseData = this.result;
