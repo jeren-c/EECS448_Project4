@@ -3,8 +3,8 @@
 	color: #444;
 	cursor: pointer;
 	padding: 18px;
-	width: 100%;
-	transition: 0.4s;
+	width: 90%;
+	transition: 0.2s;
 }
 
 .accordion-content{
@@ -12,7 +12,7 @@
 	background-color: #fff;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.2s ease-out;
+	transition: max-height 0.2s ease-in-out;
 }
 
 .active, .accordion:hover{
@@ -30,3 +30,84 @@
 .active:after{
 	content: '\2212';
 }
+
+.accordion span{
+	margin-right: 1%;
+}
+
+.accordion-content div span, #items-view span{
+	display: table-cell;
+	width: 23%;
+}
+
+.accordion-content div{
+	display: table-row;
+}
+
+fieldset{
+	width: 80%;
+	margin:auto;
+}
+
+#items-view span{
+	/*border-right: 2px solid blue;*/
+
+}
+
+#modify-item, #modify-item fieldset{
+	margin-top: 2%;
+}
+
+#modify-item fieldset input{
+	margin: 1% 2% 1% 0; 
+}
+button{
+	float: right;
+	margin-right: 3%;
+	width: 70px;
+	height: 50px;
+	border-radius: 10px;
+	background: linear-gradient (gray);
+	box-shadow: inset 1px blue;
+	transition: 0.4s ease-in;
+}
+
+button:hover{
+	box-shadow-color: green;
+	background: linear-gradient(white);
+	background-color: #000000;
+	color: #ffffff;
+}
+button:active{
+	position: relative;
+}
+/*input:valid{
+	background-color: green;
+}*/
+input:invalid{
+	background-color: red;
+}
+
+/*input + span {
+  position: relative;
+}
+
+input + span::before {
+  position: absolute;
+  right: -20px;
+  top: 5px;
+}
+
+input:invalid {
+  border: 2px solid red;
+}
+
+input:invalid + span::before {
+  content: '✖';
+  color: red;
+}
+
+input:valid + span::before {
+  content: '✓';
+  color: green;
+}*/

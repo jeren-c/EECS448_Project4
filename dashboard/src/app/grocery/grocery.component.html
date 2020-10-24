@@ -1,9 +1,123 @@
 <h1>Groceries</h1>
 
-<section>
+<section id="grocery-list-view">
 	<fieldset>
-		<legend>Grocery Lists</legend>
+		<legend>Groceries List</legend>
+		<div>
+			<h4>Date: {{date | date:"fullDate"}}  </h4> 
+			<h4>Total cost: {{total_Cost | currency}}</h4>
+		</div>
+		<!--<div *ngFor="let list of items; let i = index">
+			<div class="accordion" (click)= "accOpen()">
+				<span>{{item.label}}  </span> 
+				<span><strong>Date: </strong>{{list.date}}  </span> 
+				<span><strong>Total Cost:</strong> {{list.total_Cost | currency}}</span>
+			</div>-->
 
+		<div id="items-view">
+			<div *ngFor="let item of items; let j = index" hide="!item.isActive">
+				<span>{{item.name}}  </span>
+				<span><strong>Category:</strong> {{item.category}}  </span>
+				<span><strong>Organic:</strong> {{item.organic}}  </span>
+				<span><strong>Price:</strong> {{item.price}}  </span>
+				<span><strong>Quantity:</strong> {{item.quantity}}  </span>
+			</div>
+		</div>
 	</fieldset>
 </section>
+
+<!--
+<section id="controls">
+	<div id="btns-item">
+		<button (click)="switchEditionView('item')">Modify items</button>
+		<button (click)="add_item">Add item</button>
+		<button>Remove item</button>
+		<button>Edit item</button>
+	</div>
+	<div id="btns-list">
+		<button (click)="switchEditionView('list')">Modify list</button>
+		<button>Add list</button>
+		<button>Remove list</button>
+		<button>Edit list</button>
+	</div>
+</section>-->
+
+<section id="modify-item">
+	<fieldset id="add-item">
+		<legend>Adding Item(s)</legend>
+		<div>
+			<!--<label for="listName">List Name: </label>
+			<input type="text" name="listName" id="listName1">-->
+			<p>
+				<label for="itemName">Item's Name: </label>
+				<input type="text" name="itemName" id="itemName1"><br>
+				<label for="itemCategory">Category: </label>
+				<input type="text" name="itemCategory" id="itemCategory1">
+				<label for="itemOrganic">Organic (yes/no): </label>
+				<input type="text" name="itemOrganic" value="Yes" id="itemOrganic1">
+				<!-- <input type="radio" style="margin-right: 5px;" name="itemOrganic" value="Yes" id="itemOrganic1">
+				<label for="itemOrganic">Yes</label>
+				<span> -- </span>
+				<input type="radio" style="margin-right: 5px;" name="itemOrganic" value="No" id="itemOrganic1">
+				<label for="itemOrganic">No</label>
+				 -->
+				
+			</p>
+			<p>
+				<label for="itemPrice">Price: </label>
+				<input type="number" min="0.01" name="itemPrice" id="itemPrice1">
+				<label for="itemQuantity">Quantity: </label>
+				<input type="number" name="itemQuantity" min="1" id="itemQuantity1">
+			</p>
+		</div>
+		<button (click)="add_item()">Submit</button>
+	</fieldset>
+
+	<fieldset id="remove-item">
+		<legend>Removing Item(s)</legend>
+		<div>
+			<!--<label for="listName">List Name: </label>
+			<input type="text" name="listName" id="listName2">-->
+			<label for="itemName">Item's Name: </label>
+			<input type="text" name="itemName" id="itemName2">
+		
+			<button (click)="remove_item()">Submit</button>
+		</div>
+	</fieldset>
+
+	<fieldset id="edit-item">
+		<legend>Editing Item(s)</legend>
+		<div>
+			<!--<label for="listName">List Name: </label>
+			<input type="text" name="listName" id="listName3">-->
+			<label for="itemName">Item's Name: </label>
+			<input type="text" name="itemName" id="itemName3"><br>
+			<label for="itemField">Field to change: </label>
+			<input type="text" name="itemField" id="itemField">
+			<label for="fieldValue">New Value: </label>
+			<input type="text" name="fieldValue" id="fieldValue">
+			<button (click)="edit()">Submit</button>
+		</div>
+		
+	</fieldset>
+</section>
+
+<!--
+<section id= "modify-list">
+	<fieldset id="add-list">
+		<legend>Adding a Grocery list</legend>
+		<div>
+			<label for="itemName">Name: </label>
+			<input type="text" name="itemName" id="itemName">
+		</div>
+	</fieldset>
+
+	<fieldset id="remove-list">
+		<legend>Removing a Grocery list</legend>
+	</fieldset>
+
+	<fieldset id="edit-list">
+		<legend>Editing a Grocery list</legend>
+	</fieldset>
+</section>-->
 
