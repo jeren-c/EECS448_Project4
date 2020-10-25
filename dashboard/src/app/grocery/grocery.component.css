@@ -90,7 +90,6 @@ button{
 }
 
 button:hover{
-	box-shadow-color: green;
 	background: linear-gradient(white);
 	background-color: #000000;
 	color: #ffffff;
