@@ -26,7 +26,7 @@ export class WeightComponent implements OnInit {
   }
 
 
-  /*
+  /** doSubmit: Calculates information provided
   * Calculates information provided by using to see where they are from the goal
   * @pre none
   * @post gives the user and alert as to where they are in terms of progress 
@@ -63,7 +63,7 @@ export class WeightComponent implements OnInit {
   }
 
 
-  /*
+  /** updateIni: Saves Initial weight
   * Saves the initial weight given by the user
   * @pre the info entered by the user
   * @post none 
@@ -77,7 +77,7 @@ export class WeightComponent implements OnInit {
  }
 
 
- /*
+ /** updateG: saves the goal weight
   * Saves the goal weight given by the user
   * @pre the info entered by the user
   * @post none 
@@ -90,7 +90,7 @@ export class WeightComponent implements OnInit {
    this.goalWeight=event.target.value;
  }
 
- /*
+ /** updateC: saves current weight
   * Saves the Current weight given by the user
   * @pre the info entered by the user
   * @post none 
