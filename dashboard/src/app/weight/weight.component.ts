@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeightComponent implements OnInit {
 
-  iniWeight: any;
-  goalWeight: any;
-  changedWeight: any;
-  differ: any;
-  remaining: any;
-  commit:any; 
+  iniWeight: any; //Initial weight
+  goalWeight: any;//Goal weight
+  changedWeight: any;//current weight
+  differ: any;//the difference between current and initial weight
+  remaining: any;//the remaining amount of weight needed
 
   constructor() { }
 
