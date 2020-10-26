@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 //import {GroceryListService} from '../grocery-list.service';
 import {GroceryItemService} from '../grocery-item.service';
+import { ThrowStmt } from '@angular/compiler';
 //import * as $ from 'jquery';
 
 @Component({
@@ -77,6 +78,7 @@ export class GroceryComponent implements OnInit {
 * @return None
 */
   updateCost(){
+    this.total_Cost = 0;
     this.items.forEach(item => {
       this.total_Cost += (item.price * item.quantity);
     })
