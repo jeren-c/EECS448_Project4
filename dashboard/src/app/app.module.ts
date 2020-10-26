@@ -8,7 +8,7 @@ import { GroceryComponent } from './grocery/grocery.component';
 import { WeightComponent } from './weight/weight.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -25,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-   // NgxChartsModule
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
