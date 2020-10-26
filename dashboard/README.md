@@ -29,4 +29,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Work Cited
 This project used the following websites
 1. [Ngx-charts.](https://swimlane.github.io/ngx-charts/#/ngx-charts/advanced-pie-chart) - Library used to create charts 
+2. [Typedoc](http://typedoc.org/api/) - Used to create documentation
 
