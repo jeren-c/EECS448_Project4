@@ -25,7 +25,7 @@ export class GroceryListService {
     }*/
   }
 
-  add_Item(name: string = ("Item " + (this.items.length + 1)), price:number = 0, organic: boolean = false, quantity: number = 1, category?:string):void {
+  add_Item(name: string = ("Item " + (this.items.length + 1)), price:number = 0, organic: string = "Yes", quantity: number = 1, category?:string):void {
     var newItem = new GroceryItemService (name,category, price, organic, quantity); 
     this.items.push(newItem);
 
@@ -40,7 +40,7 @@ export class GroceryListService {
 
   edit_item(name: string, newItem: GroceryItemService):void{
     this.items.forEach((item, index) =>{
-      if(item.name == name) this.items[index].edit_item(newItem);
+      //if(item.name == name) this.items[index].edit_item(newItem);
     });
   }
 }
