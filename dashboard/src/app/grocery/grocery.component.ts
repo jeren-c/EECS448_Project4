@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 //import {GroceryListService} from '../grocery-list.service';
 import {GroceryItemService} from '../grocery-item.service';
+import { ThrowStmt } from '@angular/compiler';
 //import * as $ from 'jquery';
 
 @Component({
@@ -46,11 +47,12 @@ export class GroceryComponent implements OnInit {
     //this.label = "Grocery List";
     this.date = new Date();
 
-    this.item1 = new GroceryItemService ("item 1", "dairy", 2.5, "Yes", 2);
+    /*this.item1 = new GroceryItemService ("item 1", "dairy", 2.5, "Yes", 2);
     this.item2 = new GroceryItemService ("item 2", "poultry", 5.89, "NO", 1);
     this.item3 = new GroceryItemService ("item 3", "drinks", 4.25, "Yes", 1);
     this.item4 = new GroceryItemService ("item 4", "consmetics", 10, "No", 1);
-    this.items =[this.item1, this.item2, this.item3, this.item4];
+    this.items =[this.item1, this.item2, this.item3, this.item4];*/
+    this.items = [];
 
     //this.items = this.list_of_items;
 
@@ -77,6 +79,7 @@ export class GroceryComponent implements OnInit {
 * @return None
 */
   updateCost(){
+    this.total_Cost = 0;
     this.items.forEach(item => {
       this.total_Cost += (item.price * item.quantity);
     })
