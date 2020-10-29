@@ -1,5 +1,6 @@
 <h1>Budget Tracker</h1>
 <div class="info">
+    <!-- Bank Amount Input -->
     <div class="row">
         <div class="col"></div>
         <div class="col">
@@ -26,6 +27,7 @@
         <hr>
         <div class="row">
             <div class="col-md-1"></div>
+            <!-- Income Input -->
             <div class="col">
                 <div class="income">
                     <div class= "row">
@@ -40,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Category Input -->
             <div class="col">
                 <div class="category">
                     <div class= "row">
@@ -57,6 +60,7 @@
         </div>
         <div class="row">
             <div class="col-md-1"></div>
+            <!-- Saving Input -->
             <div class="col">
                 <div class="saving">
                     <div class= "row">
@@ -72,6 +76,7 @@
                 </div>
             </div>
             <div class="col">
+                <!-- Expense Form and Input -->
                 <form [formGroup]="categoryForm">
                     <div class="expense">
                         <div class= "row">
@@ -94,6 +99,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- Income Pie Chart -->
             <div class="col-lg-6">
                 <div class="ichart" *ngIf = "ivalid">
                     <ngx-charts-advanced-pie-chart 
@@ -102,6 +108,7 @@
                     </ngx-charts-advanced-pie-chart>
                 </div>
             </div>
+            <!-- Expense Pie Chart -->
             <div class="col-lg-6">
                 <div class="echart" *ngIf = "evalid">
                     <ngx-charts-advanced-pie-chart 
@@ -111,6 +118,7 @@
                 </div>
             </div>
         </div>
+        <!-- Saved Message -->
         <div class="saved" *ngIf = "svalid">
             <div class="good" *ngIf="saved">
                 <h2>You have saved! You saved ${{margin}}. When you aimed to save at least ${{save}}</h2>
