@@ -41,7 +41,7 @@ export class BudgetComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.amount = 0;
+    this.amount = -1;
     this.income = 0;
     this.itemp = 0;
     this.categoryList = [];
@@ -51,27 +51,42 @@ export class BudgetComponent implements OnInit {
     this.totalexp = 0;
     this.ivalid = false;
     this.evalid = false;
-    this.percent = 0;
+    this.percent = -1;
     this.svalid = false;
     this.exist = false;
   }
 
   // Income //
   updateAmount(event: any){
-    this.amount = event.target.value;
+    if(event.target.value >= 0){
+      this.amount = event.target.value;
+    }
+    else{
+      this.amount = -1;
+    } 
   }
   addIncome(event: any){
-    this.itemp = event.target.value;
+    if(event.target.value >= 0){
+      this.itemp = event.target.value;
+    }
+    else{
+      this.itemp = -1;
+    }
   }
   updateIncome(val:number){
-    this.itemp = 0;
-    this.income = +this.income + +val;
-    console.log(this.income);
-    if(this.percent > 0){
-      this.updateSavings()
-      this.checkSavings();
+    if(val >= 0){
+      this.itemp = 0;
+      this.income = +this.income + +val;
+      console.log(this.income);
+      if(this.percent > 0){
+        this.updateSavings()
+        this.checkSavings();
+      }
+      this.updateIncomeData();
     }
-    this.updateIncomeData();
+    else{
+      alert('Invalid action!\nYou need to input a positive dollar amount.');
+    }
   }
 
   // Category //
@@ -160,12 +175,23 @@ export class BudgetComponent implements OnInit {
 
   // Savings //
   addSavings(event:any){
-    this.percent = (event.target.value/100);
+    if(event.target.value >= 0){
+      this.percent = (event.target.value/100);
+    }
+    else{
+      this.percent = -1;
+    }
   }
   updateSavings(){
-    this.save = +this.income * +this.percent;
-    console.log(this.save);
-    this.checkSavings();
+    if(this.percent >=0)
+    {
+      this.save = +this.income * +this.percent;
+      console.log(this.save);
+      this.checkSavings();
+    }
+    else{
+      alert('Invalid action!\nYou need to input a positive number.');
+    }
   }
   checkSavings(){
     if(this.save > 0){
@@ -204,21 +230,27 @@ export class BudgetComponent implements OnInit {
 
   // Chart Data //
   updateIncomeData(){
-    this.ivalid = true;
-    if(this.income > 0 && this.amount > 0){
-      this.incomeData = [
-        { name: "Bank" , value: +this.amount},
-        { name: "Income" , value: +this.income}];
+    if(this.amount >= 0){ 
+      this.ivalid = true;
+      if(this.income > 0 && this.amount > 0){
+        this.incomeData = [
+          { name: "Bank" , value: +this.amount},
+          { name: "Income" , value: +this.income}];
+      }
+      else if( this.amount <= 0 && this.income > 0){
+        this.incomeData = [{ name: "Income" , value: +this.income}];
+      }
+      else{
+        this.incomeData = [
+          { name: "Bank" , value: +this.amount}];
+      }
+      console.log("income chart data");
+      console.log(this.incomeData);
     }
-    else if( this.amount <= 0 && this.income > 0){
-      this.incomeData = [{ name: "Income" , value: +this.income}];
+    else
+    {
+      alert('Invalid action!\nYou need to input a positive dollar amount.');
     }
-    else{
-      this.incomeData = [
-        { name: "Bank" , value: +this.amount}];
-    }
-    console.log("income chart data");
-    console.log(this.incomeData);
   }
   updateExpenseData(){
     this.evalid = true;

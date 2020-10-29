@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="initial">
-                            <input type="number" (keyup)="updateAmount($event)" id='aInput'>
+                            <input type="text" pattern="\d+" (keyup)="updateAmount($event)" min="0" id='aInput'>
                             &nbsp;
                             <button (click)="updateIncomeData()" onclick="document.getElementById('aInput').value = ''">Enter</button>
                         </div>
@@ -33,7 +33,7 @@
                             <label>Add Income</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="number" (keyup)="addIncome($event)" id='iInput'>
+                            <input type="text" (keyup)="addIncome($event)" id='iInput'>
                             &nbsp;
                             <button (click)="updateIncome(itemp)" onclick="document.getElementById('iInput').value = ''">Add +$</button>
                         </div>
@@ -64,7 +64,7 @@
                             <label>Save _% of Income&nbsp;</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="number" (keyup)="addSavings($event)" id='sInput'>
+                            <input type="text" (keyup)="addSavings($event)" id='sInput'>
                             &nbsp;
                             <button (click)="updateSavings()" onclick="document.getElementById('sInput').value = ''">Enter %</button>
                         </div>

@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     * `cd dashboard`
 4. Run `npm install`
 5. Install Ngx-charts
-    * `ng new ngx-charts-demo`
+    * `npm install @swimlane/ngx-charts --save`
     * `npm install @angular/cdk --save`
 6. Run `ng serve --open`
 7. Refresh to restart
@@ -23,7 +23,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     * `cd dashboard`
 4. Run `npm install`
 5. Install Ngx-charts
-    * `ng new ngx-charts-demo`
+    * `npm install @swimlane/ngx-charts --save`
     * `npm install @angular/cdk --save`
 
 # Work Cited
