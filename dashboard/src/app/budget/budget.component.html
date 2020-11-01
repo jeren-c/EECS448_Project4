@@ -105,6 +105,7 @@
                 <div class="ichart" *ngIf = "ivalid">
                     <ngx-charts-advanced-pie-chart 
                         [results]="incomeData"
+                        [scheme]="iColors"
                         [view]= "[900,300]">
                     </ngx-charts-advanced-pie-chart>
                 </div>
@@ -114,6 +115,7 @@
                 <div class="echart" *ngIf = "evalid">
                     <ngx-charts-advanced-pie-chart 
                         [results]="expenseData"
+                        [scheme]="eColors"
                         [view]= "[900,300]">
                     </ngx-charts-advanced-pie-chart>
                 </div>

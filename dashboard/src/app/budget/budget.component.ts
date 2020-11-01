@@ -34,6 +34,13 @@ export class BudgetComponent implements OnInit {
   saved: boolean;
   exist: boolean;
   margin: number;
+  // Chart Colors
+  iColors = {
+    domain: ['#478559', '#0CFF00']
+  }
+  eColors = {
+    domain: ['#B00000', '#FF2E00', '#901A00', '#CF3A29', '#6B2115', '#640404', '#9C2A2A' ]
+  }
 
 
   /**
