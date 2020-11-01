@@ -12,6 +12,8 @@ export class WeightComponent implements OnInit {
   changedWeight: any;//current weight
   differ: any;//the difference between current and initial weight
   remaining: any;//the remaining amount of weight needed
+  height: any//how tall a person is
+  bmi: any// the value for the calculated BMI
 
   constructor() { }
 
@@ -37,6 +39,7 @@ export class WeightComponent implements OnInit {
     //goal reach
     this.differ=this.changedWeight - this.iniWeight;
     this.remaining=this.changedWeight-this.goalWeight;
+    document.getElementById("differ").innerText="Weight Difference: " + this.differ;
     if(this.remaining == 0 ){
       alert("Congrats, you have reach the goal!");
     }
@@ -61,7 +64,24 @@ export class WeightComponent implements OnInit {
     }
   }
 
+  BMI(): any{
+    this.bmi=(this.changedWeight/(this.height*this.height))*703;
+    if(this.bmi>25.0)
+    {
+     alert("You are Overweight!");
+     alert("Recommendations: Eat healthier foods and exercise");
+    }
+    else if(this.bmi<18.5)
+    {
+      alert("You are underweight!");
+      alert("Recommendations: Try eating alittle more");
+    }
+    else
+    {
+      alert("Your BMI Index is good Great Job!");
+    }
 
+  }
   /** updateIni: Saves Initial weight
   * Saves the initial weight given by the user
   * @pre the info entered by the user
@@ -73,6 +93,7 @@ export class WeightComponent implements OnInit {
  updateIni(event: any)
  {
    this.iniWeight=event.target.value;
+   document.getElementById("ini").innerText="Initial Weight: " + this.iniWeight;
  }
 
 
@@ -87,6 +108,7 @@ export class WeightComponent implements OnInit {
  updateG(event: any)
  {
    this.goalWeight=event.target.value;
+   document.getElementById("goalW").innerText="Goal Weight: " + this.goalWeight;
  }
 
  /** updateC: saves current weight
@@ -100,7 +122,16 @@ export class WeightComponent implements OnInit {
  updateC(event: any)
  {
    this.changedWeight=event.target.value;
+   document.getElementById("currentW").innerText="Current Weight: " + this.changedWeight;
+ }
+
+ updateH(event: any)
+ {
+  this.height=event.target.value;
+  document.getElementById("height").innerText="Height: " + this.height; 
  }
 }
+
+
 
 
