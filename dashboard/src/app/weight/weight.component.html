@@ -1,1 +1,22 @@
-<p>weight works!</p>
+<app-header></app-header>
+<h1>Weight Tracker</h1>
+
+<div class="List">
+    <ul>
+        <p>Initial Weight <input type="number" (keyup)="updateIni($event)" id= "intWeight" size="3"/>lb</p>
+        <p>Goal Weight <input type="number" (keyup)= "updateG($event)" id= "goalWeight" size="3"/>lb</p>
+        <p>Current Weight <input type="number" (keyup)="updateC($event)" id= "weightIn" size="3"/>lb</p>
+    </ul>
+
+    <button (click) = "doSubmit()">Submit</button>
+
+    <pre>
+
+        {{iniWeight | json}}
+        {{goalWeight | json}}
+        {{changedWeight | json}}
+        {{differ | json}}
+        
+    </pre>
+    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/considering-losing-weight-1602099244.png?crop=0.5023255813953489xw:1xh;center,top&resize=640:*" alt="weight" width= "200" height="250">
+</div>

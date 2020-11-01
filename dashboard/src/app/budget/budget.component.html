@@ -1,1 +1,134 @@
-<p>budget works!</p>
+<app-header></app-header>
+<h1>Budget Tracker</h1>
+<div class="info">
+    <!-- Bank Amount Input -->
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="amount">
+                <div class= "row">
+                    <div class="col-md-5">
+                        <div class="initial">
+                            <label>Current bank amount</label>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="initial">
+                            <input type="text" pattern="\d+" (keyup)="updateAmount($event)" min="0" id='aInput'>
+                            &nbsp;
+                            <button (click)="updateIncomeData()" onclick="document.getElementById('aInput').value = ''">Enter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div *ngIf="ivalid">
+        <hr>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <!-- Income Input -->
+            <div class="col">
+                <div class="income">
+                    <div class= "row">
+                        <div class="col-md-4">
+                            <label>Add Income</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" (keyup)="addIncome($event)" id='iInput'>
+                            &nbsp;
+                            <button (click)="updateIncome(itemp)" onclick="document.getElementById('iInput').value = ''">Add +$</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Category Input -->
+            <div class="col">
+                <div class="category">
+                    <div class= "row">
+                        <div class="col-md-4">
+                            <label>Add Budget Category&nbsp;</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" (keyup)="addCategory($event)" id='cInput'>
+                            &nbsp;
+                            <button (click)="updateCategoryList(ctemp)" onclick="document.getElementById('cInput').value = ''">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <!-- Saving Input -->
+            <div class="col">
+                <div class="saving">
+                    <div class= "row">
+                        <div class="col-md-4">
+                            <label>Save _% of Income&nbsp;</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" (keyup)="addSavings($event)" id='sInput'>
+                            &nbsp;
+                            <button (click)="updateSavings()" onclick="document.getElementById('sInput').value = ''">Enter %</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Expense Form and Input -->
+                <form [formGroup]="categoryForm">
+                    <div class="expense">
+                        <div class= "row">
+                            <div class="col-md-4">
+                                <label>Add Expense</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select formControlName="category">
+                                    <option value="Select one...">Select one...</option>
+                                    <option *ngFor="let cate of categoryList">{{cate}}</option>
+                                </select>
+                                &nbsp;
+                                <input type="number" (keyup)="addExpense($event)" id='eInput'>
+                                &nbsp;
+                                <button (click)="updateExpense()" onclick="document.getElementById('eInput').value = ''">Add -$</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Income Pie Chart -->
+            <div class="col-lg-6">
+                <div class="ichart" *ngIf = "ivalid">
+                    <ngx-charts-advanced-pie-chart 
+                        [results]="incomeData"
+                        [view]= "[900,300]">
+                    </ngx-charts-advanced-pie-chart>
+                </div>
+            </div>
+            <!-- Expense Pie Chart -->
+            <div class="col-lg-6">
+                <div class="echart" *ngIf = "evalid">
+                    <ngx-charts-advanced-pie-chart 
+                        [results]="expenseData"
+                        [view]= "[900,300]">
+                    </ngx-charts-advanced-pie-chart>
+                </div>
+            </div>
+        </div>
+        <!-- Saved Message -->
+        <div class="saved" *ngIf = "svalid">
+            <div class="good" *ngIf="saved">
+                <h2>You have saved! You saved ${{margin}}. When you aimed to save at least ${{save}}</h2>
+            </div>
+            <div class="bad" *ngIf="saved === false">
+                <div *ngIf="margin >= 0">
+                    <h2>You did not save! You've only saved ${{margin}}. When you wanted to save at least ${{save}}</h2>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

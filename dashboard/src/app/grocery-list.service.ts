@@ -6,41 +6,58 @@ import {GroceryItemService} from './grocery-item.service';
 })
 export class GroceryListService {
   label: string;
-  l_Index = 1;
   date: Date;
-  total_Cost: number = 0;
+  list_Cost: number = 0;
   items:  GroceryItemService[];
 
-  constructor(name,date,list) { 
+  constructor(name) { 
     this.label = name;
-    this.date = date;
-    this.items = list;
-
-    this.items.forEach(item => {
-      this.total_Cost += (item.price * item.quantity);
-    })
-    /*for(let i = 0; i < list.length; i++){
-      this.items[i] = list[i];
-      this.l_Index += 1;
-    }*/
+    this.date = new Date();
+    this.items = [];
+    //this.items.forEach(item => {
+      //this.list_Cost += (item.price * item.quantity);
+    //})
+  
   }
 
-  add_Item(name: string = ("Item " + (this.items.length + 1)), price:number = 0, organic: boolean = false, quantity: number = 1, category?:string):void {
+  updateCost(){
+    this.list_Cost = 0;
+    this.items.forEach(item => {
+      this.list_Cost += (item.price * item.quantity);
+    })
+  }
+
+  add_item(name: string = ("Item " + (this.items.length + 1)), price:number = 0, organic: string = "Yes", quantity: number = 1, category?:string):void {
     var newItem = new GroceryItemService (name,category, price, organic, quantity); 
     this.items.push(newItem);
-
-    console.log(name + "to add2\n");
   }
 
-  remove_Item(name: string):void{
+  remove_item(name: string):void{
+    var found: boolean = false;
     this.items.forEach((item, index) =>{
-      if(item.name == name) this.items.splice(index, 1);
+      if(item.name == name){ 
+        this.items.splice(index, 1);
+        found = true;
+      }
     });
+
+    if(!found){
+      alert(name + " Does not Exist.")
+    }
   }
 
-  edit_item(name: string, newItem: GroceryItemService):void{
+  edit_item(name: string, field, newVal):void{
+    var found: boolean = false;
     this.items.forEach((item, index) =>{
-      if(item.name == name) this.items[index].edit_item(newItem);
+      if(item.name == name){
+        this.items[index].edit_item(field, newVal);
+        found = true;
+      }
     });
+
+    if(!found){
+      alert(name + " Does not Exist.")
+    }
   }
+
 }

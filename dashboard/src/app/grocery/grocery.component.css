@@ -1,14 +1,32 @@
+html {
+    background-color:rgb(122, 206, 172);
+}
+
+h1{
+    border: 3px solid rgb(21, 65, 51);
+    padding: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(21, 65, 51);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+p {
+    text-align: center;
+}
 .accordion{
 	background-color: #eee;
 	color: #444;
 	cursor: pointer;
 	padding: 18px;
-	width: 90%;
+	width: 100%;
 	transition: 0.2s;
 }
 
 .accordion-content{
-	padding: 0 18px;
+	width: 100%;
+	padding: 0 1px;
 	background-color: #fff;
 	max-height: 0;
 	overflow: hidden;
@@ -35,13 +53,17 @@
 	margin-right: 1%;
 }
 
-.accordion-content div span, #items-view span{
+.accordion-content div span{
 	display: table-cell;
-	width: 23%;
+	width: 21.8%;
 }
 
-.accordion-content div{
-	display: table-row;
+label{
+	margin: 2% 1% 0 2%;
+}
+
+#modify-item fieldset{
+	margin-top: 3%;
 }
 
 fieldset{
@@ -49,18 +71,7 @@ fieldset{
 	margin:auto;
 }
 
-#items-view span{
-	/*border-right: 2px solid blue;*/
 
-}
-
-#modify-item, #modify-item fieldset{
-	margin-top: 2%;
-}
-
-#modify-item fieldset input{
-	margin: 1% 2% 1% 0; 
-}
 button{
 	float: right;
 	margin-right: 3%;
@@ -73,7 +84,6 @@ button{
 }
 
 button:hover{
-	box-shadow-color: green;
 	background: linear-gradient(white);
 	background-color: #000000;
 	color: #ffffff;
@@ -81,33 +91,3 @@ button:hover{
 button:active{
 	position: relative;
 }
-/*input:valid{
-	background-color: green;
-}
-input:invalid{
-	background-color: red;
-}
-*/
-/*input + span {
-  position: relative;
-}
-
-input + span::before {
-  position: absolute;
-  right: -20px;
-  top: 5px;
-}
-
-input:invalid {
-  border: 2px solid red;
-}
-
-input:invalid + span::before {
-  content: '✖';
-  color: red;
-}
-
-input:valid + span::before {
-  content: '✓';
-  color: green;
-}*/
