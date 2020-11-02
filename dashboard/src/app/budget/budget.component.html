@@ -90,7 +90,7 @@
                                     <option *ngFor="let cate of categoryList">{{cate}}</option>
                                 </select>
                                 &nbsp;
-                                <input type="number" (keyup)="addExpense($event)" id='eInput'>
+                                <input type="text" (keyup)="addExpense($event)" id='eInput'>
                                 &nbsp;
                                 <button (click)="updateExpense()" onclick="document.getElementById('eInput').value = ''">Add -$</button>
                             </div>
