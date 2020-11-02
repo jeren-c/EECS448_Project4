@@ -66,12 +66,12 @@ export class BudgetComponent implements OnInit {
    */  
   ngOnInit(): void {
     this.amount = -1;
-    this.income = 0;
+    this.income = -1;
     this.itemp = 0;
     this.categoryList = [];
     this.expenseList = [];
     this.ctemp = ''
-    this.expense = 0;
+    this.expense = -1;
     this.totalexp = 0;
     this.ivalid = false;
     this.evalid = false;
@@ -197,7 +197,12 @@ export class BudgetComponent implements OnInit {
    * @returns None
    */
   addExpense(event:any){
-    this.expense = event.target.value;
+    if(event.target.value >= 0){
+      this.expense = event.target.value;
+    }
+    else{
+      this.expense = -1;
+    }
   }
 
   /**
@@ -208,7 +213,7 @@ export class BudgetComponent implements OnInit {
    * @returns None
    */
   updateExpense(){
-    if(this.categoryForm.valid && this.categoryForm.value.category !== 'Select one...'){
+    if(this.categoryForm.valid && this.categoryForm.value.category !== 'Select one...' && this.expense >= 0){
       let i = 0;
       let update = false;
       for(let exp in this.expenseList){
@@ -246,8 +251,11 @@ export class BudgetComponent implements OnInit {
       this.checkSavings();
     }
     else if (this.categoryForm.invalid || this.categoryForm.value.category === 'Select one...'){
-      this.expense = 0;
+      this.expense = -1;
       alert('Invalid action!\nYou need to choose a category.');
+    }
+    else{
+      alert('Invalid action!\nYou need to input a positive dollar amount.');
     }
   }
 
