@@ -18,6 +18,10 @@ export class WeightComponent implements OnInit {
   goodValueG: any//checks to make sure the goal weight is valid
   goodValueC: any//checks to make sure the current weight is valid
   goodValueH: any//checks to make sure the Height is valid
+  useI: any//checks if Initial weight was inputed
+  useG: any//checks if goal weight was inputed
+  useC: any//checks if current weight was inputed 
+  useH: any//checks if height was inputed
   constructor() { }
 
   
@@ -40,6 +44,11 @@ export class WeightComponent implements OnInit {
   */
   doSubmit(): any{
     //goal reach
+    if(this.useI==false || this.useG==false || this.useC==false)
+    {
+      alert("Please input needed values!");
+    }
+    else if(this.useI==true && this.useG==true && this.useC==true){
     if(this.goodValueI==false || this.goodValueG==false || this.goodValueC==false){
       alert("Please fix your invalid values");
     }
@@ -71,8 +80,14 @@ export class WeightComponent implements OnInit {
     }
    }
   }
+  }
 
   BMI(): any{
+    if(this.useC==false || this.useH==false)
+    {
+      alert("Please input the required values!");
+    }
+    else if(this.useC==true && this.useH==true){
     if(this.goodValueC==false || this.goodValueH==false)
     {
       alert("Please fix your invalid values");
@@ -95,6 +110,7 @@ export class WeightComponent implements OnInit {
     }
    }
   }
+  }
   /** updateIni: Saves Initial weight
   * Saves the initial weight given by the user
   * @pre the info entered by the user
@@ -109,11 +125,13 @@ export class WeightComponent implements OnInit {
     document.getElementById("ini").innerText="Initial Weight: Invalid";
      alert("How could you have a weight less than 0? Please Try Again")
      this.goodValueI=false;
+     this.useI=true;
    }
    else{
    this.iniWeight=event.target.value;
    document.getElementById("ini").innerText="Initial Weight: " + this.iniWeight;
    this.goodValueI=true;
+   this.useI=true;
    }
  }
 
@@ -132,11 +150,13 @@ export class WeightComponent implements OnInit {
     document.getElementById("goalW").innerText="Goal Weight: Invalid";
     alert("How do you expect to get to a weight below 0...or even at 0? Please Try Again")
      this.goodValueG=false;
+     this.useG=true;
    }
    else{
    this.goalWeight=event.target.value;
    document.getElementById("goalW").innerText="Goal Weight: " + this.goalWeight;
    this.goodValueG=true;
+   this.useG=true;
    }
  }
 
@@ -154,11 +174,13 @@ export class WeightComponent implements OnInit {
     document.getElementById("currentW").innerText="Current Weight: Invalid";
     alert("How did you manage to get a negative weight your clearly lying? Please Try Again")
      this.goodValueC=false;
+     this.useC=true;
    }
    else{
    this.changedWeight=event.target.value;
    document.getElementById("currentW").innerText="Current Weight: " + this.changedWeight;
    this.goodValueC=true;
+   this.useC=true;
    }
  }
 
@@ -168,12 +190,14 @@ export class WeightComponent implements OnInit {
     document.getElementById("height").innerText="Height: Invalid";
     alert("What would being a negative height be? Please Try Again")
      this.goodValueH=false;
+     this.useH=true;
    }
    else
    {
    this.height=event.target.value;
    document.getElementById("height").innerText="Height: " + this.height;
    this.goodValueH=true; 
+   this.useH=true;
    }
  }
 }
