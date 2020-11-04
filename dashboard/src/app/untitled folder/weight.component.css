@@ -1,0 +1,27 @@
+html {
+    background-color: rgb(122, 206, 172);
+}
+
+h1 {
+    border: 3px solid rgb(21, 65, 51);
+    padding: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(21, 65, 51);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+p {
+    text-align: center;
+    border: 1px solid rgb(66, 43, 14);
+    padding: 10px;
+}
+
+button {
+    text-align: center;
+}
+
+pre {
+    text-align: center;
+}
